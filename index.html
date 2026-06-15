@@ -96,7 +96,8 @@ body{font-family:'Inter',sans-serif;background:#fff;color:var(--gray-800);line-h
 .bonus-free-badge{display:inline-block;background:var(--green);color:#fff;font-size:14px;font-weight:900;padding:6px 18px;border-radius:100px;letter-spacing:0.5px}
 
 /* PROVA SOCIAL */
-.social{background:var(--gray-50);padding:44px 0}
+.social{background:var(--gray-50);padding:44px 0 64px;position:relative;overflow:hidden}
+.social::after{content:'';position:absolute;bottom:-40px;left:0;right:0;height:80px;background:var(--navy);border-radius:50% 50% 0 0/100% 100% 0 0;pointer-events:none}
 .social-inner{padding:0 24px}
 .carousel-wrap{overflow:hidden;margin-top:20px}
 .carousel-track{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;padding:8px 24px 16px;scrollbar-width:none}
@@ -109,7 +110,8 @@ body{font-family:'Inter',sans-serif;background:#fff;color:var(--gray-800);line-h
 .total-badge{display:inline-flex;align-items:center;gap:6px;background:var(--green-light);color:var(--green-dark);font-size:12px;font-weight:700;padding:7px 14px;border-radius:100px;margin-top:18px;margin-left:24px}
 
 /* OFERTA */
-.offer{background:var(--navy);padding:44px 24px;text-align:center}
+.offer{background:var(--navy);padding:44px 24px 64px;text-align:center;position:relative;overflow:hidden}
+.offer::after{content:'';position:absolute;bottom:-40px;left:0;right:0;height:80px;background:#fff;border-radius:50% 50% 0 0/100% 100% 0 0;pointer-events:none}
 .offer-title{font-size:24px;font-weight:900;color:#fff;line-height:1.2;margin-bottom:8px}
 .offer-sub{font-size:14px;color:rgba(255,255,255,.65);margin-bottom:28px}
 .plans{display:flex;flex-direction:column;gap:16px}
@@ -154,7 +156,8 @@ body{font-family:'Inter',sans-serif;background:#fff;color:var(--gray-800);line-h
 .guarantee strong{color:#fff}
 
 /* FAQ */
-.faq{padding:44px 24px;background:#fff}
+.faq{padding:44px 24px 64px;background:#fff;position:relative;overflow:hidden}
+.faq::after{content:'';position:absolute;bottom:-40px;left:0;right:0;height:80px;background:var(--navy);border-radius:50% 50% 0 0/100% 100% 0 0;pointer-events:none}
 details{border-bottom:1px solid var(--gray-200);padding:15px 0}
 details:first-of-type{border-top:1px solid var(--gray-200)}
 summary{font-size:14px;font-weight:600;color:var(--navy);cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:12px}
@@ -394,6 +397,7 @@ footer a{color:rgba(255,255,255,0.7);text-decoration:underline}
 <section class="offer" id="oferta">
   <p class="offer-title" style="color: var(--gold); text-transform: uppercase;">FIZEMOS ALGO ESPECIAL PARA VOCÊ 🚀</p>
   <p class="offer-sub">Dois planos, um único objetivo: sua aprovação.</p>
+  <img src="logo-mais-vendido.png" alt="O Mais Vendido" style="width:100%;max-width:320px;margin:0 auto 32px;display:block;mix-blend-mode:screen;animation:pulse 3s infinite;">
 
   <div class="urgency-bar">OFERTA POR TEMPO LIMITADO, APENAS HOJE! <span class="current-date-span"></span></div>
   <script>
@@ -431,7 +435,7 @@ footer a{color:rgba(255,255,255,0.7);text-decoration:underline}
         <span style="background: #ef4444; color: #fff; font-size: 10px; font-weight: 800; padding: 4px 8px; border-radius: 4px; animation: pulse 2s infinite; letter-spacing: 0.5px;">🔥 O MAIS VENDIDO</span>
       </div>
       <p class="plan-name">Plano Premium</p>
-      <img src="logo-mais-vendido.png" class="premium-img" style="margin:12px auto 20px;" alt="O Mais Vendido">
+      <img src="oferta.png" class="premium-img" style="margin:12px auto 20px; background: var(--navy); mix-blend-mode: normal; padding: 10px; border-radius: 16px;" alt="Plano Premium">
       <p class="plan-desc">O pacote completo para quem quer <strong>a aprovação mais rápida possível</strong>, com todos os bônus e suporte.</p>
       <ul class="plan-includes">
         <li><span class="ic">✅</span> +1500 Mapas Mentais completos</li>
