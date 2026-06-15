@@ -158,6 +158,44 @@ footer a{color:rgba(255,255,255,0.7);text-decoration:underline}
 /* STICKY */
 .sticky-bar{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:100%;max-width:480px;background:#fff;border-top:1px solid var(--gray-200);padding:10px 20px;z-index:100;box-shadow:0 -4px 20px rgba(0,0,0,.1)}
 .top-bar{background:#e11d48;color:#fff;font-size:12px;font-weight:800;text-transform:uppercase;padding:8px 12px;text-align:center;animation:pulse 2s infinite;width:100%;max-width:480px;margin:0 auto}
+
+/* MODAL */
+.modal-overlay {
+  display: none;
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(11, 31, 74, 0.9);
+  z-index: 1000;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  backdrop-filter: blur(5px);
+}
+.modal-overlay.active {
+  display: flex;
+  animation: fadeIn 0.3s ease;
+}
+.modal-content {
+  background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+  border: 2px solid var(--gold);
+  border-radius: var(--radius-lg);
+  padding: 24px;
+  width: 100%;
+  max-width: 400px;
+  text-align: center;
+  position: relative;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.5), 0 0 20px rgba(252,211,77,0.2);
+  animation: slideUp 0.3s ease;
+}
+.modal-close {
+  position: absolute;
+  top: 12px; right: 16px;
+  background: transparent; border: none;
+  color: rgba(255,255,255,0.6);
+  font-size: 24px; cursor: pointer;
+}
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+@keyframes slideUp { from { transform: translateY(20px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
 </style>
 </head>
 <body>
@@ -361,7 +399,7 @@ footer a{color:rgba(255,255,255,0.7);text-decoration:underline}
       <p class="plan-price-from">De R$87,90</p>
       <p class="plan-price">R$10<small style="font-size:20px">,00</small></p>
       <p class="plan-price-label">pagamento único · acesso imediato</p>
-      <a href="https://ggcheckout.app/checkout/v3/4FmU4k4xJFoYSJy2Wqyl" class="btn-cta" style="font-size:15px;padding:16px 20px">QUERO O ESSENCIAL POR R$10</a>
+      <a href="#" onclick="openModal(event)" class="btn-cta" style="font-size:15px;padding:16px 20px">QUERO O ESSENCIAL POR R$10</a>
     </div>
 
     <!-- PLANO PREMIUM R$19,90 -->
@@ -439,6 +477,48 @@ footer a{color:rgba(255,255,255,0.7);text-decoration:underline}
 <div class="sticky-bar">
   <a href="#oferta" class="btn-cta gold" style="font-size:14px;padding:14px 20px">⚡ VER PLANOS — A PARTIR DE R$10</a>
 </div>
+
+<!-- UPSell Modal -->
+<div id="upsellModal" class="modal-overlay">
+  <div class="modal-content">
+    <button class="modal-close" onclick="closeModal()">×</button>
+    <span class="plan-badge" style="background:var(--gold);color:var(--navy);box-shadow:0 0 10px rgba(252,211,77,0.4)">⚡ OFERTA EXCLUSIVA</span>
+    <h2 style="color:var(--gold);margin:10px 0;font-size:24px;font-weight:900;">Espere! Leve o Premium por apenas R$14,90</h2>
+    <p style="color:rgba(255,255,255,.8);font-size:14px;margin-bottom:15px;">Antes de finalizar, leve <strong>TODOS os benefícios do Plano Premium</strong> com um desconto especial.</p>
+    
+    <ul class="plan-includes" style="text-align:left;background:rgba(0,0,0,.2);padding:15px;border-radius:10px;margin-bottom:20px;">
+      <li><span class="ic">✅</span> 900+ Mapas Mentais completos</li>
+      <li><span class="ic">✅</span> Acesso ao App exclusivo (12 meses)</li>
+      <li><span class="ic">✅</span> PDF de alta resolução para imprimir</li>
+      <li><span class="ic">✅</span> 15+ disciplinas cobertas</li>
+      <li><span class="ic">🎁</span> <strong>Guia Como Fazer Revisão</strong></li>
+      <li><span class="ic">🎁</span> <strong>Bizus e Mnemônicos</strong></li>
+      <li><span class="ic">🎁</span> <strong>Questões Comentadas</strong></li>
+      <li><span class="ic">🎁</span> <strong>Redação Nota 10</strong></li>
+      <li><span class="ic">🔄</span> <strong>Atualizações vitalícias</strong></li>
+      <li><span class="ic">💬</span> <strong>Suporte prioritário por WhatsApp</strong></li>
+    </ul>
+    
+    <div style="margin-bottom:20px;">
+      <p style="font-size:12px;text-decoration:line-through;color:rgba(255,255,255,.5);margin-bottom:2px">De R$19,90</p>
+      <p style="font-size:36px;font-weight:900;color:var(--gold);line-height:1;margin-bottom:4px">R$14<small style="font-size:20px">,90</small></p>
+      <p style="font-size:12px;color:rgba(255,255,255,.6)">pagamento único · acesso imediato</p>
+    </div>
+    
+    <a href="https://ggcheckout.app/checkout/v3/JPIIx62JOXqDGOJyTVkh" class="btn-cta gold" style="font-size:15px;padding:16px 20px;margin-bottom:16px;">🎉 SIM! QUERO O PREMIUM POR R$14,90</a>
+    <a href="https://ggcheckout.app/checkout/v3/4FmU4k4xJFoYSJy2Wqyl" style="color:rgba(255,255,255,.6);font-size:13px;text-decoration:underline;display:block;">Não, obrigado. Quero apenas o Essencial por R$10.</a>
+  </div>
+</div>
+
+<script>
+function openModal(e) {
+  e.preventDefault();
+  document.getElementById('upsellModal').classList.add('active');
+}
+function closeModal() {
+  document.getElementById('upsellModal').classList.remove('active');
+}
+</script>
 
 </body>
 </html>
