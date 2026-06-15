@@ -115,10 +115,13 @@ body{font-family:'Inter',sans-serif;background:#fff;color:var(--gray-800);line-h
 .plans{display:flex;flex-direction:column;gap:16px}
 
 /* PLANO BÁSICO */
-.plan{border-radius:var(--radius-lg);padding:24px 20px;text-align:left;border:2px solid transparent}
-.plan.basic{background:rgba(255,255,255,.07);border-color:rgba(255,255,255,.15)}
-@keyframes premium-glow{0%{box-shadow:0 0 10px rgba(252,211,77,0.3)}100%{box-shadow:0 0 25px rgba(252,211,77,0.8)}}
-.plan.premium{background:linear-gradient(135deg, #0f172a 0%, #1e293b 100%);border:2px solid var(--gold);position:relative;animation:premium-glow 2s infinite alternate;overflow:hidden}
+.plan{border-radius:var(--radius-lg);padding:24px 20px;text-align:left;border:2px solid transparent;transition: transform 0.3s, box-shadow 0.3s}
+.plan:hover{transform: translateY(-4px)}
+.plan.basic{background:rgba(255,255,255,.05);border-color:rgba(255,255,255,.15);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);box-shadow:0 8px 32px rgba(0,0,0,.15)}
+@keyframes premium-glow{0%{box-shadow:0 0 15px rgba(252,211,77,0.3), inset 0 0 10px rgba(252,211,77,0.1); border-color: rgba(252,211,77,0.7);}100%{box-shadow:0 0 30px rgba(252,211,77,0.8), inset 0 0 20px rgba(252,211,77,0.3); border-color: var(--gold);}}
+.plan.premium{background:linear-gradient(145deg, #0B1F4A 0%, #1e293b 100%);border:2px solid var(--gold);position:relative;animation:premium-glow 2.5s infinite alternate;overflow:hidden;z-index:1}
+.plan.premium::before{content:'';position:absolute;top:0;left:-100%;width:50%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.08),transparent);transform:skewX(-20deg);animation:shine 5s infinite;}
+@keyframes shine{0%{left:-100%}15%{left:200%}100%{left:200%}}
 .premium-img{width:100%;max-width:280px;margin:16px auto;display:block;border-radius:10px;mix-blend-mode:screen;filter:drop-shadow(0 4px 12px rgba(252,211,77,0.3))}
 .plan-badge{display:inline-block;font-size:11px;font-weight:800;padding:4px 12px;border-radius:100px;margin-bottom:12px;letter-spacing:.4px;text-transform:uppercase}
 .plan.basic .plan-badge{background:rgba(255,255,255,.12);color:rgba(255,255,255,.75)}
@@ -389,7 +392,7 @@ footer a{color:rgba(255,255,255,0.7);text-decoration:underline}
 
 <!-- OFERTA -->
 <section class="offer" id="oferta">
-  <p class="offer-title">Escolha o seu plano e<br>comece agora! 🚀</p>
+  <p class="offer-title" style="color: var(--gold); text-transform: uppercase;">FIZEMOS ALGO ESPECIAL PARA VOCÊ 🚀</p>
   <p class="offer-sub">Dois planos, um único objetivo: sua aprovação.</p>
 
   <div class="urgency-bar">OFERTA POR TEMPO LIMITADO, APENAS HOJE! <span class="current-date-span"></span></div>
@@ -423,9 +426,12 @@ footer a{color:rgba(255,255,255,0.7);text-decoration:underline}
 
     <!-- PLANO PREMIUM R$19,90 -->
     <div class="plan premium">
-      <span class="plan-badge">⭐ MAIS COMPLETO</span>
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
+        <span class="plan-badge" style="margin-bottom:0;">⭐ MAIS COMPLETO</span>
+        <span style="background: #ef4444; color: #fff; font-size: 10px; font-weight: 800; padding: 4px 8px; border-radius: 4px; animation: pulse 2s infinite; letter-spacing: 0.5px;">🔥 O MAIS VENDIDO</span>
+      </div>
       <p class="plan-name">Plano Premium</p>
-      <img src="oferta.png" class="premium-img" alt="Tudo que vem no Plano Premium">
+      <img src="logo-mais-vendido.png" class="premium-img" style="margin:12px auto 20px;" alt="O Mais Vendido">
       <p class="plan-desc">O pacote completo para quem quer <strong>a aprovação mais rápida possível</strong>, com todos os bônus e suporte.</p>
       <ul class="plan-includes">
         <li><span class="ic">✅</span> +1500 Mapas Mentais completos</li>
